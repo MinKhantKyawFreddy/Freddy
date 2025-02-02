@@ -2,14 +2,33 @@ MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 
 def main():
+    print(MENU)
     score = int(input("Score: "))
-    valid_score(score)
-    result(score)
+    choice = input(">>>").upper()
+
+    while choice != "Q":
+        if choice == "G":
+            valid_score(score)
+            print(valid_score(score))
+        elif choice == "P":
+            result(score)
+            print(result(score))
+        elif choice == "S":
+            show_stars(score)
+            print(show_stars(score))
+        else:
+            print("Invalid choice")
+        print(MENU)
+        choice = input(">>>").upper()
+    else:
+        print("GOOD BYE")
 
 
 def valid_score(score):
     if score > 100 or score < 0:
         return "INVALID SCORE"
+    else:
+        return "Score is valid"
 
 
 def result(score):
@@ -21,6 +40,11 @@ def result(score):
         return "Pass"
     else:
         return "Bad"
+
+
+def show_stars(score):
+    star = "*" * score
+    return star
 
 
 main()
